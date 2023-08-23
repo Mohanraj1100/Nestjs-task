@@ -1,8 +1,17 @@
-import { CreatePostInput } from './create-post.input';
-import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
+import { InputType, Field } from '@nestjs/graphql';
 
 @InputType()
-export class UpdatePostInput extends PartialType(CreatePostInput) {
-  @Field(() => Int)
-  id: number;
+export class UpdatePostInput {
+
+  @Field()
+  id:string;
+
+  @Field()
+  postName: string;
+
+  @Field({nullable:true})
+  updatedAt: string;
+
+  @Field({nullable:true})
+  deleteAt: string;
 }

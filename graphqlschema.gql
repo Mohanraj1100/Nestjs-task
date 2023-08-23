@@ -3,32 +3,70 @@
 # ------------------------------------------------------
 
 input CreatePostInput {
+  createdAt: String
+  deleteAt: String
   postName: String!
+  postOrderNumber: Float
+  updatedAt: String
   userId: String!
 }
 
 input CreateUserInputs {
+  createAt: String
+  deleteAt: String
   fullname: String!
+  phonenumber: Float!
+  updateAt: String
 }
 
 type Mutation {
   createPost(createPostInput: CreatePostInput!): Post!
   createUser(createUserInputs: CreateUserInputs!): User!
+  deletePost(deletePost: String!): Post!
+  deleteUser(deleteUser: String!): User!
+  updatePost(updatepostInputs: UpdatePostInput!): Post!
+  updateUser(updateUserInputs: UpdateUserInputs!): User!
 }
 
 type Post {
+  createdAt: String
+  deletedAt: String
   id: String!
-  name: String!
+  postName: String!
+  postOrderNumber: Float!
+  updatedAt: String
   user: User!
   userId: String!
 }
 
 type Query {
+  getAllPost: [Post!]!
+  getAllUser: [User!]!
+  getPostById(id: String!): Post!
   getUserById(id: String!): User!
 }
 
-type User {
+input UpdatePostInput {
+  deleteAt: String
+  id: String!
+  postName: String!
+  updatedAt: String
+}
+
+input UpdateUserInputs {
+  deleteAt: String
   fullname: String!
   id: String!
+  phonenumber: Float!
+  updateAt: String
+}
+
+type User {
+  createAt: String
+  deleteAt: String
+  fullname: String!
+  id: String!
+  phonenumber: Float!
   post: [Post!]
+  updateAt: String
 }
